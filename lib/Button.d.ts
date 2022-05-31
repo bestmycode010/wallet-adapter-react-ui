@@ -7,5 +7,7 @@ export interface ButtonProps {
     startIcon?: ReactElement;
     style?: CSSProperties;
     tabIndex?: number;
+    customMenuTitle?: string;
+    customMenuAction?: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 export declare const Button: FC<ButtonProps>;

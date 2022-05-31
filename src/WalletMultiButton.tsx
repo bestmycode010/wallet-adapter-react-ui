@@ -56,6 +56,8 @@ export const WalletMultiButton: FC<ButtonProps> = ({ children, ...props }) => {
         };
     }, [ref, closeDropdown]);
 
+    const handleCustomAction = props.customMenuAction ? props.customMenuAction : console.log;
+
     if (!wallet) return <WalletModalButton {...props}>{children}</WalletModalButton>;
     if (!base58) return <WalletConnectButton {...props}>{children}</WalletConnectButton>;
 
@@ -83,6 +85,11 @@ export const WalletMultiButton: FC<ButtonProps> = ({ children, ...props }) => {
                 <li onClick={openModal} className="wallet-adapter-dropdown-list-item" role="menuitem">
                     Connect a different wallet
                 </li>
+                {props.customMenuTitle && props.customMenuTitle !== '' &&
+                    <li onClick={handleCustomAction} className="wallet-adapter-dropdown-list-item" role="menuitem">
+                        {props.customMenuTitle}
+                    </li>
+                }
                 <li onClick={disconnect} className="wallet-adapter-dropdown-list-item" role="menuitem">
                     Disconnect
                 </li>
